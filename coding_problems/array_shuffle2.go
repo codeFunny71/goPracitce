@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
 	test := []int{1, 7, 3, 2, 5, 4}
+	test2 := []int{1, 1, 3, 3, 1, 4}
 
 	n := 3
 	fmt.Println("original")
@@ -14,6 +15,7 @@ func main() {
 	fmt.Println(test)
 	fmt.Println("summed")
 	fmt.Println(runningSum(test))
+	fmt.Println(numIdenticalPairs(test2))
 
 }
 
@@ -37,4 +39,16 @@ func runningSum(nums []int) []int {
 		nums[i] += nums[i-1]
 	}
 	return nums
+}
+
+func numIdenticalPairs(nums []int) int {
+	count := 0
+	for i := 0; i < len(nums); i++ {
+		for j := i + 1; j < len(nums); j++ {
+			if nums[i] == nums[j] {
+				count += 1
+			}
+		}
+	}
+	return count
 }
